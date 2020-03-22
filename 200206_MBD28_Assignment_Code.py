@@ -2,13 +2,17 @@
 """
 ESCP
 Machine Learning Assignment
+Philipp Aring (e197031)
 """
+import os
+os.chdir("C:/Users/phili/OneDrive/Documents/GitHub/Buyer_Detection_model")
+
 import numpy as np
 import pandas as pd
 pd.set_option('display.max_columns', 50)
 import matplotlib.pyplot as plt
 
-raw=pd.read_csv("C:/Users/phili/OneDrive/Documents/ESCP/MBD28 Machine Learning with Python/Assignment/train.csv")
+raw=pd.read_csv("https://raw.githubusercontent.com/philsML/Buyer_Detection_model/master/train.csv")
 
 #1. REORDER DATAFRAME
 raw.head(10)
@@ -362,7 +366,7 @@ print(test_class_report)
 
 #6. APPLICATION OF MODEL
 
-raw=pd.read_csv("C:/Users/phili/OneDrive/Documents/ESCP/MBD28 Machine Learning with Python/Assignment/test1.csv")
+raw=pd.read_csv("https://raw.githubusercontent.com/philsML/Buyer_Detection_model/master/test1.csv")
 cols = raw.columns.tolist()
 cols = cols[1:13] + cols[14:15] + cols[24:27] + cols[13:14] + cols[15:24] + cols[0:1]
 raw = raw[cols]
@@ -384,9 +388,9 @@ for i in X_apply["class_prob_1"]:
     else:
         prediction_class.append(-1)
 
-data=pd.read_csv("C:/Users/phili/OneDrive/Documents/ESCP/MBD28 Machine Learning with Python/Assignment/test1.csv")
+data=pd.read_csv("https://raw.githubusercontent.com/philsML/Buyer_Detection_model/master/test1.csv")
 data["class_prob_-1"] = X_apply["class_prob_-1"]
 data["class_prob_1"] = X_apply["class_prob_1"]
 data["prediction_class"] = prediction_class
 
-pd.DataFrame.to_csv(data,path_or_buf="C:/Users/phili/OneDrive/Documents/ESCP/MBD28 Machine Learning with Python/Assignment/test1_predicted.csv",sep=",")
+pd.DataFrame.to_csv(data,"test1_predicted.csv",sep=";")
